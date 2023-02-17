@@ -1,11 +1,6 @@
 import face_recognition
 import pickle
 
-# Open the file containing the names
-with open(r'C:\Users\donve\Desktop\project\mode1\names.txt', 'r') as file:
-    # Read the lines from the file
-    lines = file.readlines()
-
 # Create an empty list to store the names
 names = []
 
@@ -17,6 +12,11 @@ face_encodings = []
 
 # List to store the names of all the individuals
 known_face_names = []
+
+# Open the file containing the names
+with open(r'C:\Users\donve\Desktop\project\perfected\docs\names.txt', 'r') as file:
+    # Read the lines from the file
+    lines = file.readlines()
 
 # Loop over the lines in the file
 for line in lines:
