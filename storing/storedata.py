@@ -6,13 +6,28 @@ import csv
 # Load the known faces and names from a CSV file
 known_faces = []
 known_names = []
-with open('known_faces.csv', 'r') as file:
-    reader = csv.reader(file)
-    for row in reader:
-        img = face_recognition.load_image_file(row[0])
-        encoding = face_recognition.face_encodings(img)[0]
-        known_faces.append(encoding)
-        known_names.append(row[1])
+
+# Open the file containing the names
+with open(r'C:\Users\donve\Desktop\project\mode1\names.txt', 'r') as file:
+    # Read the lines from the file
+    lines = file.readlines()
+
+# Create an empty list to store the names
+names = []
+
+# Loop over the lines in the file
+for line in lines:
+    # Remove the newline character from the end of the line
+    line = line.strip()
+    # Add the name to the list
+    names.append(line)
+
+# Load the images of known individuals
+for name in names:
+    image = face_recognition.load_image_file(f"C:\\Users\\donve\\Desktop\\project\\mode1\\{name}.jpg")
+    face_encoding = face_recognition.face_encodings(image)[0]
+    known_faces.append(face_encoding)
+    known_names.append(name)
 
 # Initialize some variables
 face_locations = []
